@@ -21,7 +21,28 @@ const getById = async (req, res) => {
 
 const update = async (req, res) => {
   const { id } = req.params;
-  const result = await updateEvent(id, req.body);
+  const { en, ua } = req.body;
+  const { path: imagePath } = req.file;
+
+  const updatedEvent = {
+    ua: ua
+      ? {
+          title: ua.title ? ua.title : null,
+          description: ua.description ? ua.description : null,
+          imgAlt: ua.imgAlt ? ua.imgAlt : null,
+        }
+      : null,
+    en: en
+      ? {
+          title: en.title ? en.title : null,
+          description: en.description ? en.description : null,
+          imgAlt: en.imgAlt ? en.imgAlt : null,
+        }
+      : null,
+    image: imagePath ? imagePath : null,
+  };
+
+  const result = await updateEvent(id, updatedEvent);
   res.json(result);
 };
 

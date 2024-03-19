@@ -19,6 +19,7 @@ router.delete("/:id", autenticate, isValidId, ctrl.remove);
 router.put(
   "/:id",
   autenticate,
+  upload.single("image"),
   isValidId,
   validateBody(schemas.updateEventSchema),
   ctrl.update
