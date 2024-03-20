@@ -34,6 +34,10 @@ const locationSchema = new Schema(
       type: String,
       required: true,
     },
+    numberArabic: {
+      type: Number,
+      required: true,
+    },
     // locationId: {
     //   type: String,
     //   required: true,
@@ -65,6 +69,7 @@ const createLocationSchema = Joi.object({
     imgAlt: Joi.string(),
   }),
   number: Joi.string().required(),
+  numberArabic: Joi.number().required(),
   // locationId: Joi.string().required(),
 });
 
@@ -80,6 +85,7 @@ const updateLocationSchema = Joi.object({
     imgAlt: Joi.string(),
   }),
   number: Joi.string(),
+  numberArabic: Joi.number().required(),
   // locationId: Joi.string(),
 });
 
