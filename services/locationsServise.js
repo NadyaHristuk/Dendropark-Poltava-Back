@@ -3,7 +3,10 @@ const { Location } = require("../models/location");
 
 const getAllLocations = async (page = 1, limit = 20) => {
   const skip = (page - 1) * limit;
-  return await Location.find({}, "-createdAt -updatedAt -owner", { skip, limit });
+  return await Location.find({}, "-createdAt -updatedAt -owner")
+    .sort({ numberArabic: 1 })
+    .skip(skip)
+    .limit(limit);
 };
 
 const getLocationById = async (id) => {
