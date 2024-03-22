@@ -3,7 +3,7 @@ const { Event } = require("../models/event");
 
 const getAllEvents = async (page = 1, limit = 20) => {
   const skip = (page - 1) * limit;
-  return await Event.find({}, "-createdAt -updatedAt -owner", { skip, limit });
+  return await Event.find({}, " -updatedAt -owner", { skip, limit });
 };
 
 const getEventById = async (id) => {
